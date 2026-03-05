@@ -48,19 +48,41 @@ function loadTodos (){
     }
 }
 
-//描画
-function render (){
-    //1)リストを空にする
+
+function deleteTodo(id) {
+    todos = todos.filter((t) => t.id !== id);
+    saveTodos(todos);
+    render();
+  }
+  //描画
+  function render() {
+    //   画面をリセット　←todo-listの中身削除
     listEl.innerHTML = "";
+  
+    // todosを1個ずつ取り出す
+    for (const todo of todos) {
 
-    //2)todosを表示
-    for (const todo of todos){
-        const li = document.createElement("li");
-        li.textContent = todo.title;
-        listEl.appendChild(li);
+    // li要素を作成
+      const li = document.createElement("li");
+        
+    //   liにタスク名を入れる
+      li.textContent = todo.title + " ";
+  
+    // 削除ボタンの作成
+      const deleteBtn = document.createElement("button");
+    //   ボタンクリック時の挙動：何もしない
+      deleteBtn.type = "button";
+    //ボタン内に「削除」の文字
+      deleteBtn.textContent = "削除";
+      デリートボタンクリック→
+      deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
+  
+    //   li要素の子要素に削除ボタンを入れる
+      li.appendChild(deleteBtn);
+    //   ulタグ(todo-list)の子要素にliを入れる
+      listEl.appendChild(li);
     }
-
-    //3)残り件数
+  
     const remaining = todos.filter((t) => !t.completed).length;
     remainingEl.textContent = String(remaining);
-}
+  }
