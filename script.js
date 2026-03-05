@@ -74,7 +74,7 @@ function deleteTodo(id) {
       deleteBtn.type = "button";
     //ボタン内に「削除」の文字
       deleteBtn.textContent = "削除";
-      デリートボタンクリック→
+      // デリートボタンクリック→deleteTodo関数実行
       deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
   
     //   li要素の子要素に削除ボタンを入れる
