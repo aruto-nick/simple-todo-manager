@@ -37,6 +37,7 @@ function saveTodos (todos){
     localStorage.setItem("todos",JSON.stringify(todos));
 }
 
+//配列の作成
 function loadTodos (){
     const json = localStorage.getItem("todos")
     if (!json) return[];
@@ -50,13 +51,17 @@ function loadTodos (){
 
 
 function deleteTodo(id) {
+    // 配列を更新→条件に合うものだけ残す
     todos = todos.filter((t) => t.id !== id);
+    // todos配列の保存
     saveTodos(todos);
+    // 画面の更新
     render();
   }
+
   //描画
   function render() {
-    //   画面をリセット　←todo-listの中身削除
+    // 画面をリセット　←todo-listの中身削除
     listEl.innerHTML = "";
   
     // todosを1個ずつ取り出す
@@ -65,7 +70,7 @@ function deleteTodo(id) {
     // li要素を作成
       const li = document.createElement("li");
         
-    //   liにタスク名を入れる
+    // liにタスク名を入れる
       li.textContent = todo.title + " ";
   
     // 削除ボタンの作成
@@ -77,7 +82,7 @@ function deleteTodo(id) {
       // デリートボタンクリック→deleteTodo関数実行
       deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
   
-    //   li要素の子要素に削除ボタンを入れる
+    // li要素の子要素に削除ボタンを入れる
       li.appendChild(deleteBtn);
     //   ulタグ(todo-list)の子要素にliを入れる
       listEl.appendChild(li);
