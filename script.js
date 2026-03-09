@@ -71,7 +71,9 @@ function deleteTodo(id) {
       const li = document.createElement("li");
         
     // liにタスク名を入れる
-      li.textContent = todo.title + " ";
+      const titleSpan = document.createElement("span");
+      titleSpan.textContent = todo.title + " ";
+    
   
     // 削除ボタンの作成
       const deleteBtn = document.createElement("button");
