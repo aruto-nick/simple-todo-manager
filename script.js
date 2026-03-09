@@ -75,6 +75,13 @@ function deleteTodo(id) {
      checkbox.type = "checkbox";
      checkbox.checked = todo.completed;
 
+    //  changeイベント(クリック→completed更新→保存→再描画)
+    checkbox.addEventListener("change",() => {
+      todo.completed = checkbox.checked;
+      saveTodos(todos);
+      render();
+    });
+
         
     // liにタスク名を入れる
       const titleSpan = document.createElement("span");
