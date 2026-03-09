@@ -69,6 +69,12 @@ function deleteTodo(id) {
 
     // li要素を作成
       const li = document.createElement("li");
+
+    //チェックボックスの作成
+     const checkbox = document.createElement("input");
+     checkbox.type = "checkbox";
+     checkbox.checked = todo.completed;
+
         
     // liにタスク名を入れる
       const titleSpan = document.createElement("span");
