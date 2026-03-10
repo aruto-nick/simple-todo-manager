@@ -1,0 +1,51 @@
+/* 画面を中央に寄せる */
+body{
+    font-family: sans-serif;
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+h1{
+    margin-bottom: 24px;
+}
+
+/*入力欄と追加欄を横並び、間隔開ける*/
+form{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+#todo-input{
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 16px;
+}
+
+button{
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor:pointer
+}
+
+#todo-list{
+    padding-left: 20px;
+}
+
+/* チェックボックス・タスク名・削除ボタンを横並び */
+#todo-list li{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+/* タイトルの横幅を伸ばす */
+#todo-list li span{
+    flex: 1;
+}
+
+#remaining-count{
+    font-weight: bold;
+}
