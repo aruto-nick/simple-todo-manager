@@ -86,7 +86,13 @@ function deleteTodo(id) {
     // liにタスク名を入れる
       const titleSpan = document.createElement("span");
       titleSpan.textContent = todo.title + " ";
+
+      li.appendChild(titleSpan);
     
+    // 取り消し線
+      if (todo.completed){
+        titleSpan.style.textDecoration = "line-through";
+      }
   
     // 削除ボタンの作成
       const deleteBtn = document.createElement("button");
