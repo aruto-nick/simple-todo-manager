@@ -74,6 +74,7 @@ function deleteTodo(id) {
      const checkbox = document.createElement("input");
      checkbox.type = "checkbox";
      checkbox.checked = todo.completed;
+     li.appendChild(checkbox);
 
     //  changeイベント(クリック→completed更新→保存→再描画)
     checkbox.addEventListener("change",() => {
