@@ -63,6 +63,18 @@ function deleteTodo(id) {
 
   //描画
   function render() {
+
+    //判定機能：active時→todos未達成・completed時→todos達成
+    let visibleTodos = todos;
+
+    if (currentFilter === "active"){
+      visibleTodos = todos.filter((t) => !t.completed);
+    }
+
+    if (currentFilter === "completed"){
+      visibleTodos = todos.filter((t) => t.completed)
+    }
+
     // 画面をリセット　←todo-listの中身削除
     listEl.innerHTML = "";
   
