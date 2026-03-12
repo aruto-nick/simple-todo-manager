@@ -7,6 +7,8 @@ const remainingEl = document.getElementById("remaining-count");
 // State
 let todos = loadTodos(); //起動時に復元
 
+let currentFilter = "all"; //どのフィルタを使うか
+
 //起動時にまず描画
 render();
 
@@ -113,3 +115,11 @@ function deleteTodo(id) {
     const remaining = todos.filter((t) => !t.completed).length;
     remainingEl.textContent = String(remaining);
   }
+
+  //ボタンクリック→フィルタ状態変更＆描画
+  document.querySelectorAll("#filters button").forEach((btn) => {
+    btn.addEventListener("click", ()=> {
+      currentFilter = btn.dataset.filter;
+      render();
+    });
+  });
