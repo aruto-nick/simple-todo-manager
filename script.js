@@ -78,8 +78,8 @@ function deleteTodo(id) {
     // 画面をリセット　←todo-listの中身削除
     listEl.innerHTML = "";
   
-    // todosを1個ずつ取り出す
-    for (const todo of todos) {
+    // visibleTodosを1個ずつ取り出す
+    for (const todo of visibleTodos) {
 
     // li要素を作成
       const li = document.createElement("li");
