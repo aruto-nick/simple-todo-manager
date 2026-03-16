@@ -126,6 +126,15 @@ function deleteTodo(id) {
   
     const remaining = todos.filter((t) => !t.completed).length;
     remainingEl.textContent = String(remaining);
+
+    //フィルターボタン「稼働中active」
+    document.querySelectorAll("#filters button").forEach( (btn) => {
+      btn.classList.remove("active");
+
+      if(btn.dataset.filter === currentFilter){
+        btn.classList.add("active");
+      }
+    })
   }
 
   //ボタンクリック→フィルタ状態変更＆描画

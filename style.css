@@ -29,6 +29,13 @@ button{
     cursor:pointer
 }
 
+/*実行中タスクの見た目*/
+#filters button.active{
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
 #todo-list{
     padding-left: 20px;
 }
