@@ -52,7 +52,7 @@ function loadTodos (){
 }
 
 
-function deleteTodo(id) {
+  function deleteTodo(id) {
     // 配列を更新→条件に合うものだけ残す
     todos = todos.filter((t) => t.id !== id);
     // todos配列の保存
@@ -144,3 +144,26 @@ function deleteTodo(id) {
       render();
     });
   });
+
+  function renderList () {
+
+    //フィルター配列の作成
+    let filterTodos = todos ;
+
+    //判定機能：active　→　未完了、completed　→　完了
+    if (currentFilter === "active"){
+      filterTodos = todos.filter(todo => !todo.completed);
+    }else if (currentFilter === "completed"){
+      filterTodos = todos.filter (todo => todo.completed);
+    }
+
+    //予めタスク名表示部分を「空に」する
+    listEl.innerHTML = "";
+
+    //タスク名の表示
+    filterTodos.forEach(todo => {
+      const li = document.createElement("li")
+      li.textContent = todo.title;
+      listEl.appendChild("li");
+    })
+  }
