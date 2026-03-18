@@ -145,7 +145,7 @@ function render() {
     });
 });
 
-//関数：一覧機能
+//関数：「一覧」機能
 function renderList () {
 
     //フィルター配列の作成
@@ -167,4 +167,10 @@ function renderList () {
       li.textContent = todo.title;
       listEl.appendChild("li");
     })
+}
+
+//関数：「件数」機能
+function renderCount (){
+  const remaining = todos.filter(todo => !todo.completed).length;
+  remainingEl.textContent = remaining;
 }
