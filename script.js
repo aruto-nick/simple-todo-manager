@@ -52,17 +52,17 @@ function loadTodos (){
 }
 
 
-  function deleteTodo(id) {
+function deleteTodo(id) {
     // 配列を更新→条件に合うものだけ残す
     todos = todos.filter((t) => t.id !== id);
     // todos配列の保存
     saveTodos(todos);
     // 画面の更新
     render();
-  }
+}
 
-  //描画
-  function render() {
+//描画
+function render() {
 
     //判定機能：active時→todos未達成・completed時→todos達成
     let visibleTodos = todos;
@@ -143,9 +143,10 @@ function loadTodos (){
       currentFilter = btn.dataset.filter;
       render();
     });
-  });
+});
 
-  function renderList () {
+//関数：一覧機能
+function renderList () {
 
     //フィルター配列の作成
     let filterTodos = todos ;
@@ -166,4 +167,4 @@ function loadTodos (){
       li.textContent = todo.title;
       listEl.appendChild("li");
     })
-  }
+}
