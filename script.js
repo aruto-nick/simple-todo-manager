@@ -174,3 +174,14 @@ function renderCount (){
   const remaining = todos.filter(todo => !todo.completed).length;
   remainingEl.textContent = remaining;
 }
+
+//関数：「ボタンUI」機能　→　クリックされたボタンによってcssを変更
+function renderFilter (){
+  document.querySelectorAll("[data-filter").forEach(button => {
+    if(button.dataset.filter === currentFilter){
+      button.classList.add("active");
+    }else{
+      button.classList.remove("active");
+    }
+  });
+}
