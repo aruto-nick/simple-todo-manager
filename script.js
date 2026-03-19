@@ -12,6 +12,14 @@ let currentFilter = "all"; //どのフィルタを使うか
 //起動時にまず描画
 render();
 
+//フィルタをクリック　→　現在のフィルタに設定＆描画
+ document.querySelectorAll("[data-filter]").forEach( (button)=> {
+   button.addEventListener("click",() => {
+    currentFilter = button.dataset.filter
+    render();
+   });
+ });
+
 //追加
 form.addEventListener("submit",(e) =>{
     e.preventDefault();
@@ -86,8 +94,38 @@ function renderList () {
     //タスク名の表示
     filterTodos.forEach(todo => {
       const li = document.createElement("li")
-      li.textContent = todo.title;
-      listEl.appendChild("li");
+
+      //チェックボックスの作成
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = todo.completed;
+
+      checkbox.addEventListener("change", () => {
+        todo.completed = checkbox.checked;
+        saveTodos(todos);
+        render();
+      });
+
+    //タイトル
+    const span = document.createElement("span");
+    span.textContent = todo.title;
+
+    if (todo.completed){
+      span.style.textDecoration = "line-through";
+    }
+
+    // 削除ボタン
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "削除";
+    deleteButton.addEventListener("click", () => {
+      deleteTodo(todo.id);
+    });
+
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(deleteButton);
+      
+      listEl.appendChild(li);
     })
 }
 
@@ -99,7 +137,7 @@ function renderCount (){
 
 //関数：「ボタンUI」機能　→　クリックされたボタンによってcssを変更
 function renderFilter (){
-  document.querySelectorAll("[data-filter").forEach(button => {
+  document.querySelectorAll("[data-filter]").forEach(button => {
     if(button.dataset.filter === currentFilter){
       button.classList.add("active");
     }else{
