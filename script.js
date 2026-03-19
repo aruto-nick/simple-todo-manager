@@ -61,89 +61,11 @@ function deleteTodo(id) {
     render();
 }
 
-//描画
 function render() {
-
-    //判定機能：active時→todos未達成・completed時→todos達成
-    let visibleTodos = todos;
-
-    if (currentFilter === "active"){
-      visibleTodos = todos.filter((t) => !t.completed);
-    }
-
-    if (currentFilter === "completed"){
-      visibleTodos = todos.filter((t) => t.completed)
-    }
-
-    // 画面をリセット　←todo-listの中身削除
-    listEl.innerHTML = "";
-  
-    // visibleTodosを1個ずつ取り出す
-    for (const todo of visibleTodos) {
-
-    // li要素を作成
-      const li = document.createElement("li");
-
-    //チェックボックスの作成
-     const checkbox = document.createElement("input");
-     checkbox.type = "checkbox";
-     checkbox.checked = todo.completed;
-     li.appendChild(checkbox);
-
-    //  changeイベント(クリック→completed更新→保存→再描画)
-    checkbox.addEventListener("change",() => {
-      todo.completed = checkbox.checked;
-      saveTodos(todos);
-      render();
-    });
-
-        
-    // liにタスク名を入れる
-      const titleSpan = document.createElement("span");
-      titleSpan.textContent = todo.title + " ";
-
-      li.appendChild(titleSpan);
-    
-    // 取り消し線
-      if (todo.completed){
-        titleSpan.style.textDecoration = "line-through";
-      }
-  
-    // 削除ボタンの作成
-      const deleteBtn = document.createElement("button");
-    //   ボタンクリック時の挙動：何もしない
-      deleteBtn.type = "button";
-    //ボタン内に「削除」の文字
-      deleteBtn.textContent = "削除";
-      // デリートボタンクリック→deleteTodo関数実行
-      deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
-  
-    // li要素の子要素に削除ボタンを入れる
-      li.appendChild(deleteBtn);
-    //   ulタグ(todo-list)の子要素にliを入れる
-      listEl.appendChild(li);
-    }
-  
-    const remaining = todos.filter((t) => !t.completed).length;
-    remainingEl.textContent = String(remaining);
-
-    //フィルターボタン「稼働中active」
-    document.querySelectorAll("#filters button").forEach( (btn) => {
-      btn.classList.remove("active");
-
-      if(btn.dataset.filter === currentFilter){
-        btn.classList.add("active");
-      }
-    })
-  }
-
-  //ボタンクリック→フィルタ状態変更＆描画
-  document.querySelectorAll("#filters button").forEach((btn) => {
-    btn.addEventListener("click", ()=> {
-      currentFilter = btn.dataset.filter;
-      render();
-    });
-});
+  renderList();
+  renderCount();
+  renderFilter();
+}
 
 //関数：「一覧」機能
 function renderList () {
