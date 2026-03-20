@@ -88,7 +88,7 @@ function renderList () {
       filterTodos = todos.filter (todo => todo.completed);
     }
 
-    //予めタスク名表示部分を「空に」する
+    //予めタスク名を「空で」表示する
     listEl.innerHTML = "";
 
     //タスク名の表示
@@ -106,27 +106,35 @@ function renderList () {
         render();
       });
 
-    //タイトル
-    const span = document.createElement("span");
-    span.textContent = todo.title;
+      //タイトル
+      const span = document.createElement("span");
+      span.textContent = todo.title;
 
-    if (todo.completed){
-      span.style.textDecoration = "line-through";
-    }
+      if (todo.completed){
+        span.style.textDecoration = "line-through";
+        span.style.opacity = "0.5";
+      }
 
-    // 削除ボタン
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "削除";
-    deleteButton.addEventListener("click", () => {
-      deleteTodo(todo.id);
-    });
+      // 削除ボタン
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "削除";
+      deleteButton.addEventListener("click", () => {
+        deleteTodo(todo.id);
+      });
 
-    li.appendChild(checkbox);
-    li.appendChild(span);
-    li.appendChild(deleteButton);
-      
-      listEl.appendChild(li);
+      li.appendChild(checkbox);
+      li.appendChild(span);
+      li.appendChild(deleteButton);
+        
+        listEl.appendChild(li);
     })
+
+     //タスク０時の表示「タスクがありません」
+     if(filterTodos.length === 0){
+      const li = document.createElement("li");
+      li.textContent ="タスクがありません";
+      listEl.appendChild(li);
+    }
 }
 
 //関数：「件数」機能
