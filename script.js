@@ -91,6 +91,14 @@ function renderList () {
     //予めタスク名を「空で」表示する
     listEl.innerHTML = "";
 
+    //タスク０時の表示「タスクがありません」
+    if(filterTodos.length === 0){
+      const li = document.createElement("li");
+      li.textContent ="タスクがありません";
+      listEl.appendChild(li);
+      return;
+    }
+
     //タスク名の表示
     filterTodos.forEach(todo => {
       const li = document.createElement("li")
@@ -128,13 +136,6 @@ function renderList () {
         
         listEl.appendChild(li);
     })
-
-     //タスク０時の表示「タスクがありません」
-     if(filterTodos.length === 0){
-      const li = document.createElement("li");
-      li.textContent ="タスクがありません";
-      listEl.appendChild(li);
-    }
 }
 
 //関数：「件数」機能
