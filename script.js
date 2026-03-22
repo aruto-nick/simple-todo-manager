@@ -79,20 +79,20 @@ function render() {
 function renderList () {
 
     //フィルター配列の作成
-    let filterTodos = todos ;
+    let filteredTodos = todos ;
 
     //判定機能：active　→　未完了、completed　→　完了
     if (currentFilter === "active"){
-      filterTodos = todos.filter(todo => !todo.completed);
+      filteredTodos = todos.filter(todo => !todo.completed);
     }else if (currentFilter === "completed"){
-      filterTodos = todos.filter (todo => todo.completed);
+      filteredTodos = todos.filter (todo => todo.completed);
     }
 
     //予めタスク名を「空で」表示する
     listEl.innerHTML = "";
 
     //タスク０時の表示「タスクがありません」
-    if(filterTodos.length === 0){
+    if(filteredTodos.length === 0){
       const li = document.createElement("li");
       li.textContent ="タスクがありません";
       listEl.appendChild(li);
@@ -100,7 +100,7 @@ function renderList () {
     }
 
     //タスク名の表示
-    filterTodos.forEach(todo => {
+    filteredTodos.forEach(todo => {
       const li = document.createElement("li")
 
       //チェックボックスの作成
