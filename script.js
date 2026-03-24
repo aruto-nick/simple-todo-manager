@@ -119,8 +119,7 @@ function renderList () {
       span.textContent = todo.title;
 
       if (todo.completed){
-        span.style.textDecoration = "line-through";
-        span.style.opacity = "0.5";
+        span.classList.add("completed");
       }
 
       // 削除ボタン

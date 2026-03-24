@@ -23,10 +23,30 @@ form{
     font-size: 16px;
 }
 
+/* ボタン(削除ボタン以外) */
 button{
     padding: 8px 12px;
     font-size: 14px;
-    cursor:pointer
+    cursor:pointer;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: white;
+    transition: 0.2s;
+}
+
+button:hover{
+    background-color: #f0f0f0;
+}
+
+/* 削除ボタン */
+#todo-list button{
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+}
+
+#todo-list button:hover{
+    background-color: #d9363e;
 }
 
 /*実行中タスクの見た目*/
@@ -55,4 +75,10 @@ button{
 
 #remaining-count{
     font-weight: bold;
+}
+
+/* 完了タスク */
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
 }
