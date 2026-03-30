@@ -27,7 +27,6 @@
 
 ・フィルター「Completed」時の画面
 ![フィルター：Completed](./images/completed.jpeg)
-
 ---
 
 ## 🔗 デモ
