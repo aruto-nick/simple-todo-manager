@@ -29,8 +29,9 @@
 ![フィルター：Completed](./images/completed.jpeg)
 ---
 
-## 🔗 デモ
-https://aruto-nick.github.io/simple-todo-manager/
+## 🔗 URL
+-Demo：https://aruto-nick.github.io/simple-todo-manager/
+-Repository:https://github.com/aruto-nick/simple-todo-manager
 
 ---
 
