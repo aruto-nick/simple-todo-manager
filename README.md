@@ -15,16 +15,18 @@
 
 ・タスク数が０の際の画面
 ![タスク０時](./images/task0.jpeg)
+---
 
 ・フィルター「ALl」時の画面
 ![フィルター：ALL](./images/all.jpeg)
+---
 
 ・フィルター「Active」時の画面
 ![フィルター：Active](./images/active.jpeg)
+---
 
 ・フィルター「Completed」時の画面
 ![フィルター：Completed](./images/completed.jpeg)
-
 
 ---
 
